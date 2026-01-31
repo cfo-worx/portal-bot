@@ -1,0 +1,68 @@
+name: Deploy to Digital Ocean Droplet
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: |
+          client/package-lock.json
+          server/package-lock.json
+    
+    - name: Install client dependencies
+      run: |
+        cd client
+        npm ci
+    
+    - name: Install server dependencies
+      run: |
+        cd server
+        npm ci
+    
+    - name: Build client
+      run: |
+        cd client
+        npm run build
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to Digital Ocean Droplet
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.DROPLET_IP }}
+        username: root
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        script: |
+          # Set error handling
+          set -e
+          
+          # Make sure the deployment script is executable and run it
+          chmod +x /var/www/html/deploy.sh
+          /var/www/html/deploy.sh
+          
+          # Verify deployment by checking if PM2 backend is running
+          sleep 5
+          if pm2 list | grep -q "backend.*online"; then
+            echo "✅ Backend server is running with PM2 after deployment"
+            pm2 show backend
+          else
+            echo "❌ Backend server failed to start after deployment"
+            pm2 logs backend --lines 10
+            exit 1
+          fi

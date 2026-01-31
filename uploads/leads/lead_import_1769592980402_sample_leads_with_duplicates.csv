@@ -1,0 +1,10 @@
+Email,Company,First Name,Last Name,Title,Phone,Industry,Revenue,Employees,City,State,Country,Website,LinkedIn,Accounting System,Notes,Source
+john.smith@acmecorp.com,Acme Corporation,John,Smith,CEO,555-0101,Manufacturing,5000000,150,San Francisco,CA,USA,https://www.acmecorp.com,https://linkedin.com/in/johnsmith,QuickBooks Online,Interested in fractional CFO services,Website
+sarah.jones@techstart.io,TechStart Inc,Sarah,Jones,CFO,555-0102,Technology,2500000,75,Seattle,WA,USA,https://www.techstart.io,https://linkedin.com/in/sarahjones,Xero,Looking for accounting support,Cold Email
+john.smith@acmecorp.com,Acme Corp,John,Smith,Chief Executive Officer,555-0101,Manufacturing,5000000,150,San Francisco,CA,USA,https://www.acmecorp.com,https://linkedin.com/in/johnsmith,QuickBooks Online,Duplicate entry - same email,Website
+mike.brown@retailco.com,RetailCo LLC,Mike,Brown,Owner,555-0103,Retail,1200000,45,Chicago,IL,USA,https://www.retailco.com,https://linkedin.com/in/mikebrown,QuickBooks Desktop,Needs help with financial reporting,Referral
+sarah.jones@techstart.io,TechStart,Sarah,Jones,Chief Financial Officer,555-0102,Technology,2500000,75,Seattle,WA,USA,https://www.techstart.io,https://linkedin.com/in/sarahjones,Xero,Duplicate - same email and domain,LinkedIn DMs
+invalid-email,Invalid Company,Test,User,Manager,555-9999,Other,100000,10,Test City,TS,USA,https://www.test.com,https://linkedin.com/in/test,QuickBooks,Missing valid email - should error,Website
+lisa.wang@manufacturingpro.com,Manufacturing Pro,Lisa,Wang,VP Finance,555-0104,Manufacturing,8000000,200,Detroit,MI,USA,https://www.manufacturingpro.com,https://linkedin.com/in/lisawang,NetSuite,Enterprise client - complex needs,LinkedIn DMs
+,Missing Email Co,Jane,Doe,Director,555-8888,Technology,500000,25,Unknown,XX,USA,https://www.missing.com,https://linkedin.com/in/janedoe,QuickBooks,No email provided - should error,Website
+david.chen@servicesgroup.com,Services Group,David,Chen,Controller,555-0105,Professional Services,3500000,90,Boston,MA,USA,https://www.servicesgroup.com,https://linkedin.com/in/davidchen,QuickBooks Online,Interested in bookkeeping services,Cold Calling

@@ -1,0 +1,278 @@
+{
+  "info": {
+    "_postman_id": "234d4028-ec32-4682-ad3b-647afb0b1ac3",
+    "name": "CFO Worx ROI Tracker API (v2 - roles aligned)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/health",
+        "description": "Basic liveness check for ROI Tracker routes."
+      },
+      "response": []
+    },
+    {
+      "name": "Get ROI Settings (Categories/Tags/Rejection Reasons)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/settings"
+      },
+      "response": []
+    },
+    {
+      "name": "List ROI Wins",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins?clientId={clientId}&status=Draft&from=2025-01-01&to=2025-12-31",
+        "description": "Query params are optional: clientId, status, from (YYYY-MM-DD), to (YYYY-MM-DD)."
+      },
+      "response": []
+    },
+    {
+      "name": "Get ROI Win by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}"
+      },
+      "response": []
+    },
+    {
+      "name": "Create ROI Win (Recurring)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins",
+        "description": "Create a draft ROI win. Use consultantSplits to attribute ROI across consultants.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientId\": \"{{clientId}}\",\n  \"title\": \"ROI Win - Monthly Cost Savings\",\n  \"categoryId\": 1,\n  \"impactType\": \"Recurring\",\n  \"impactDate\": \"2025-01-15\",\n  \"recurringMonthlyAmount\": 1500.0,\n  \"recurringStartDate\": \"2025-02-01\",\n  \"recurringEndDate\": null,\n  \"oneTimeTotalValue\": null,\n  \"oneTimeSpreadMonths\": null,\n  \"activityTags\": [\n    1,\n    2\n  ],\n  \"consultantSplits\": [\n    {\n      \"consultantId\": \"{{consultantId}}\",\n      \"percentSplit\": 100.0\n    }\n  ],\n  \"clientOwnerUserId\": \"{{clientOwnerUserId}}\",\n  \"externalNotes\": \"Client-facing summary of the win.\",\n  \"internalNotes\": \"Internal notes + supporting detail.\"\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create ROI Win (OneTime)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientId\": \"{{clientId}}\",\n  \"title\": \"ROI Win - One-Time Revenue Lift\",\n  \"categoryId\": 2,\n  \"impactType\": \"OneTime\",\n  \"impactDate\": \"2025-01-15\",\n  \"recurringMonthlyAmount\": null,\n  \"recurringStartDate\": null,\n  \"recurringEndDate\": null,\n  \"oneTimeTotalValue\": 12000.0,\n  \"oneTimeSpreadMonths\": 3,\n  \"activityTags\": [\n    3\n  ],\n  \"consultantSplits\": [\n    {\n      \"consultantId\": \"{{consultantId}}\",\n      \"percentSplit\": 60.0\n    },\n    {\n      \"consultantId\": \"{{consultantId2}}\",\n      \"percentSplit\": 40.0\n    }\n  ],\n  \"clientOwnerUserId\": \"{{clientOwnerUserId}}\",\n  \"externalNotes\": \"Client-facing summary of the win.\",\n  \"internalNotes\": \"Internal notes.\"\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update ROI Win",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}",
+        "description": "Update a win. If policy requires a correction note when editing, include correctionNote.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"UPDATED - ROI Win Title\",\n  \"categoryId\": 1,\n  \"impactType\": \"Recurring\",\n  \"impactDate\": \"2025-01-20\",\n  \"recurringMonthlyAmount\": 1750.0,\n  \"recurringStartDate\": \"2025-02-01\",\n  \"recurringEndDate\": null,\n  \"oneTimeTotalValue\": null,\n  \"oneTimeSpreadMonths\": null,\n  \"activityTags\": [\n    1\n  ],\n  \"consultantSplits\": [\n    {\n      \"consultantId\": \"{{consultantId}}\",\n      \"percentSplit\": 100.0\n    }\n  ],\n  \"clientOwnerUserId\": \"{{clientOwnerUserId}}\",\n  \"externalNotes\": \"Updated external notes.\",\n  \"internalNotes\": \"Updated internal notes.\",\n  \"correctionNote\": \"Adjusted monthly amount after review.\"\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit ROI Win",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}/submit",
+        "description": "Moves win to Submitted status (Manager/Admin can then approve/reject)."
+      },
+      "response": []
+    },
+    {
+      "name": "Approve ROI Win",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}/approve"
+      },
+      "response": []
+    },
+    {
+      "name": "Reject ROI Win",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}/reject",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rejectionReasonId\": 1,\n  \"rejectionNotes\": \"Missing supporting evidence; please attach documentation.\"\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete ROI Win (Soft Delete)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/wins/{roiWinId}"
+      },
+      "response": []
+    },
+    {
+      "name": "ROI Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/dashboard?clientId={clientId}&from=2025-01-01&to=2025-12-31"
+      },
+      "response": []
+    },
+    {
+      "name": "Upsert Activity Tag",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/settings/activity-tags",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tagId\": null,\n  \"name\": \"New Activity Tag\",\n  \"isActive\": true\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upsert Rejection Reason",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": "{{baseUrl}}/api/roi/settings/rejection-reasons",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rejectionReasonId\": null,\n  \"reason\": \"Insufficient detail\",\n  \"isActive\": true\n}"
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+/* frontend/src/pages/TimesheetsPage.css */
+
+.header-row {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .row-approved {
+    background-color: #e0ffe0;
+  }
+  
+  .row-rejected {
+    background-color: #ffe0e0;
+  }
+  
+  .row-open {
+    background-color: #fff0e0;
+  }
+  
+  .row-submitted {
+    background-color: #e0f0ff;
+  }
+  
+
+  /* frontend/src/pages/TimesheetsPage.css */
+
+/* Reduce font size for the entire Timesheets Page */
+.timesheets-container {
+    font-size: 10px; /* Adjust this value as needed (e.g., 14px - 4px = 10px) */
+  }
+  
+  /* Specific adjustments for DataGrid components */
+  .MuiDataGrid-root {
+    font-size: 10px; /* Adjust font size within the DataGrid */
+  }
+  
+  .header-row {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  /* Optional: Adjust padding and margins for better layout */
+  .MuiDataGrid-cell {
+    padding: 8px; /* Reduce padding to make room for smaller fonts */
+  }
+  
+  .action-button {
+    padding: 4px; /* Reduce padding for action buttons */
+  }
+  

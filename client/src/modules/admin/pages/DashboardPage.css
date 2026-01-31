@@ -1,0 +1,28 @@
+/* frontend/src/pages/DashboardPage.css */
+
+.dashboard-container {
+    font-size: 12px; /* Reduce font size by approximately 4px */
+    padding: 20px;
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Adjust as needed */
+  }
+  
+  .MuiDataGrid-root {
+    font-size: 12px; /* Ensure DataGrid uses smaller font size */
+  }
+  
+  .header-row {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  /* Optional: Adjust padding and margins for better layout */
+  .MuiDataGrid-cell {
+    padding: 8px; /* Reduce padding to make room for smaller fonts */
+  }
+  

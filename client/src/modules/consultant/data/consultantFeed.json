@@ -1,0 +1,113 @@
+{
+  "consultant": {
+    "ConsultantID": "3dda3b4f-49a4-4ff1-9ef2-817f95407fab",
+    "FirstName": "Jordan",
+    "LastName": "Jimenez"
+  },
+
+  "supportRequests": [
+    {
+      "RequestID": "SR-101",
+      "ClientID": "C-001",
+      "ClientName": "Delta Logistics",
+      "ProjectID": "P-100",
+      "TaskID": "T-500",
+      "Title": "Payroll report out of balance",
+      "Question": "Our payroll register does not match the GL for April.",
+      "Status": "Open",
+      "Priority": "High",
+      "CreatedDate": "2025-05-11T15:42:00Z",
+      "UpdatedDate": "2025-05-12T10:30:00Z"
+    },
+    {
+      "RequestID": "SR-102",
+      "ClientID": "C-002",
+      "ClientName": "Apex Manufacturing",
+      "ProjectID": "P-110",
+      "TaskID": "T-510",
+      "Title": "Unable to export invoices",
+      "Question": "Export to CSV hangs at 80 %.",
+      "Status": "Open",
+      "Priority": "Medium",
+      "CreatedDate": "2025-05-10T09:12:00Z",
+      "UpdatedDate": "2025-05-10T12:15:00Z"
+    },
+    {
+      "RequestID": "SR-103",
+      "ClientID": "C-003",
+      "ClientName": "BrightSide Solar",
+      "ProjectID": "P-120",
+      "TaskID": "T-520",
+      "Title": "VAT configuration question",
+      "Question": "Need confirmation on 0 % VAT treatment for exports.",
+      "Status": "Closed",
+      "Priority": "Low",
+      "CreatedDate": "2025-04-25T18:05:00Z",
+      "UpdatedDate": "2025-04-28T14:20:00Z"
+    }
+  ],
+
+  "posts": [
+    {
+      "PostID": "POST-701",
+      "TaskID": "T-500",
+      "ProjectID": "P-100",
+      "ClientID": "C-001",
+      "UserID": "U-009",
+      "UserName": "Kamlesh Patel",
+      "Message": "Finished mapping payroll liabilities. Waiting on your review.",
+      "CreatedAt": "2025-05-09T21:05:00Z",
+      "comments": [
+        {
+          "CommentID": "COM-901",
+          "UserID": "U-001",
+          "UserName": "Jordan Jimenez",
+          "Message": "Looks good.  Add a note on the 401-k split.",
+          "CreatedAt": "2025-05-10T08:17:00Z",
+          "replies": [
+            {
+              "ReplyID": "REP-301",
+              "UserID": "U-009",
+              "UserName": "Kamlesh Patel",
+              "Message": "Added.  Ready for QC.",
+              "CreatedAt": "2025-05-10T08:55:00Z"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "PostID": "POST-702",
+      "TaskID": "T-510",
+      "ProjectID": "P-110",
+      "ClientID": "C-002",
+      "UserID": "U-008",
+      "UserName": "Aline Santos",
+      "Message": "Export bug traced to null line items; fix deployed to staging.",
+      "CreatedAt": "2025-05-08T14:44:00Z",
+      "comments": []
+    },
+
+    {
+      "PostID": "POST-703",
+      "TaskID": "T-520",
+      "ProjectID": "P-120",
+      "ClientID": "C-003",
+      "UserID": "U-010",
+      "UserName": "Harry Doe",
+      "Message": "Draft VAT memo attached.",
+      "CreatedAt": "2025-04-29T11:24:00Z",
+      "comments": [
+        {
+          "CommentID": "COM-902",
+          "UserID": "U-001",
+          "UserName": "Jordan Jimenez",
+          "Message": "Approved.  Push to client portal.",
+          "CreatedAt": "2025-04-29T16:02:00Z",
+          "replies": []
+        }
+      ]
+    }
+  ]
+}
